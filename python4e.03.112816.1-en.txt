@@ -1,0 +1,132 @@
+So welcome to chapter seven, this is the payoff.
+I hope at the end of this chapter you're like I get it.
+I understand why we had to learn all that other stuff cuz we're reading files.
+So everything we've done up til now has been sort of just
+if a tree falls in the forest, if a variable gets set in a computer and
+no one reads it, did it really happen?
+Or if a tree falls in the forest and no one hears it, did it really happen?
+So that's kind of what we've been doing so far.
+We've set x equal three and then ask and we print it back out or
+we do this whatever.
+So we actually haven't done anything that touches the real world.
+I guess we did help people get out of lost elevators, but other than that,
+we haven't done much interesting at all.
+And so that's because what we've been doing so far is practicing sending
+instructions to the central processing unit and getting stuff back and forth.
+And so all the variables like your x and y, and fruit, and letter,
+they all live in here, and the code gets run in here.
+And so we're just kinda doing this over, and over, and over again.
+This is the first chapter.
+And, of course, we did go read some stuff from input and
+it comes back in and we do print some stuff to output.
+So that we've done that, but
+now we're gonna start working here cuz this is where the permanent storage is.
+And later we're gonna talk to the network and later we'll talk to a database.
+And so these are kind of the permanent storage things.
+And so everything we've done up til now is either been to the keyboard and
+the screen or just inside the computer because that's we've been learning how to
+do basically things.
+But now we're gonna do things to something, and that is to a file or
+to something.
+And that's where it gets interesting.
+And so we have these files, and
+the files we're gonna play with initially are what are called flat-text files.
+They are files that consist of lines, and
+the file we're gonna play with is called mbox.txt or mboxshort.txt.
+And you'll notice that this first line is the exact line that I
+played with at the end of the strings chapter.
+This turns out to be a standard format called a mailbox format.
+And this is when you sort of take a mail program and you export a folder,
+or a sub-folder of that mail program into a flat-file,
+this is the format that you get.
+And so it turns out that it's somewhat useful, and it's quite common to have to
+write programs to scan through email, and look through stuff in that email.
+So that's what we're gonna do.
+And so these text files, these flat-text files, meaning that they are not like
+a Word processing document or a PDF or something like that.
+They are just a set of lines that a program can read.
+Every program that you've written when you are writing Python programs are also
+flat-text files, they just happen to end in .py.
+So here is a sequence of lines, it's some characters, [SOUND], and then a new line.
+It's like you hit the Enter key, and then there's more characters, and
+then you hit the Enter key, and it goes back.
+It's like a typewriter, type-type-type-type-type,
+Enter key, type-type-type, then it goes back, etc.
+So it's a series of lines, [SOUND].
+And so before we can work with a file inside Python,
+we want to tell Python that we're gonna work with that file.
+This is an act we call opening, it's not actually reading the file,
+it's just making the file available to the code that we're going to write.
+And so the function that we use is a built in function in Python, and
+we pass in the name of the file, and whether we're gonna read it or write it.
+If we leave this out it's going to be read, and
+then it gives us back what's called a file handle.
+So an example bit of code is, open('mbox.txt, so
+we can read it, and then give me back the file handle.
+File handle is not the data, is just the way to get at the data.
+And we'll see this later when to place handles or connections or sockets or
+whatever, that they're not actually data but a thing we can manipulate it.
+So this handle is something that's sort of a pothole between your program and
+this file that's sitting on the disk.
+And you can open it, we can read from it, we can write to it if we want,
+and then we can close the handle and then the handle goes away.
+But the handle is like our connection, and so if you just open a file this is for
+read cuz I forgot that second parameter I didn't put it in.
+I print it out and it is not the actual lines,
+it says this is a file.
+And it's a thing, that's what its name is, we're reading it.
+And as we interpret the data coming out of the file,
+we're gonna use the UTF-8 character set to do that.
+So it's telling us something, but it is not the actual file,
+there could be hundreds of thousands of lines of data in that file.
+If you try to open a file that doesn't work, that's not there,
+not surprisingly, we get a trace back, okay?
+And later, we'll see how to use a try and accept to deal with
+the fact that sometimes files don't exist and you want to know that.
+Now, an important character that we haven't played with much that's going to
+kind of rule your life when you deal with files is what's called the new
+line character.
+And so here is the new line character, in a string you go blah, blah, blah \n.
+And so if you print this out one way,
+which means you just type it here, it shows you the \n.
+But if you run it on a print statement, it actually interprets it and treats that as
+a non printing character that basically moves to the beginning of the next line.
+So that's what the new line does, the new line is not two characters,
+we represent these two characters in a string.
+But inside the string, inside Python, it's really just a single character.
+So if we say X newline Y, and we store that in stuff, so
+newline, we print it and it goes, it shows this.
+But if we ask how many characters are in it, it says there are 3 characters,
+cuz that's character 1, 2, and 3, actually, it's 0, 1, and 2.
+But whatever, that's three characters it's not four characters.
+So the new line is one character not two, but
+we represent it when we're typing into Python, we represent it as \n.
+So if we think of this file as a sequence of lines, we sort of visualize it
+this way that's like line one, line two, line three, line four.
+But actually, what's going on is it's actually a long string of characters
+which are punctuated by newlines.
+And so these newlines are really in the file, [SOUND] go back to
+the beginning, [SOUND] it's like hitting the Enter button.
+It remembers the Enter button It's not like it's magic,
+there is an actual character that represents the Enter button.
+And there's sometimes on different operating systems,
+there are different versions of this, there's the Unix, the MS-DOS.
+But at the end of the day, in these files,
+there is a character that says, go back to the beginning of the next line.
+And even a blank line ends up, so it's like, [SOUND], newline, and
+it's newline again, and that gives you a blank line.
+So if you take a look here, this blank line has really got a character that you
+don't see, it's a non-printing character.
+Remember, we talked about whitespace, newlines are whitespace,
+it's things you don't see, but exist, right?
+Things you don't see, you just have to believe that they're there.
+You have to believe that there's a new line there on that little line.
+So after a while you don't need to imagine these,
+just remember that new lines are there.
+And the other thing is interesting that the print function, if we print something
+out it, automatically sticks a new line at the end for us.
+And there's a way to tell print not to do that, but by default,
+print actually prints out [SOUND] and then it puts the new line there on purpose.
+Okay, so that is how files are structured and
+where we store them inside the computer.
+And up next, we're gonna take a look at how we read files in python.

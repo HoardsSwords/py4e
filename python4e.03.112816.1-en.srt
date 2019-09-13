@@ -1,0 +1,528 @@
+0
+00:00:09,190 --> 00:00:12,619
+So welcome to chapter seven, this is the payoff.
+
+1
+00:00:12,619 --> 00:00:14,980
+I hope at the end of this chapter you're like I get it.
+
+2
+00:00:14,980 --> 00:00:19,379
+I understand why we had to learn all that other stuff cuz we're reading files.
+
+3
+00:00:20,840 --> 00:00:26,240
+So everything we've done up til now has been sort of just
+
+4
+00:00:26,240 --> 00:00:29,520
+if a tree falls in the forest, if a variable gets set in a computer and
+
+5
+00:00:29,520 --> 00:00:32,450
+no one reads it, did it really happen?
+
+6
+00:00:32,450 --> 00:00:35,380
+Or if a tree falls in the forest and no one hears it, did it really happen?
+
+7
+00:00:35,380 --> 00:00:37,355
+So that's kind of what we've been doing so far.
+
+8
+00:00:37,355 --> 00:00:40,850
+We've set x equal three and then ask and we print it back out or
+
+9
+00:00:40,850 --> 00:00:41,800
+we do this whatever.
+
+10
+00:00:41,800 --> 00:00:46,160
+So we actually haven't done anything that touches the real world.
+
+11
+00:00:46,160 --> 00:00:49,510
+I guess we did help people get out of lost elevators, but other than that,
+
+12
+00:00:49,510 --> 00:00:52,700
+we haven't done much interesting at all.
+
+13
+00:00:52,700 --> 00:00:58,550
+And so that's because what we've been doing so far is practicing sending
+
+14
+00:00:58,550 --> 00:01:01,660
+instructions to the central processing unit and getting stuff back and forth.
+
+15
+00:01:01,660 --> 00:01:05,412
+And so all the variables like your x and y, and fruit, and letter,
+
+16
+00:01:05,412 --> 00:01:08,650
+they all live in here, and the code gets run in here.
+
+17
+00:01:08,650 --> 00:01:11,660
+And so we're just kinda doing this over, and over, and over again.
+
+18
+00:01:11,660 --> 00:01:13,090
+This is the first chapter.
+
+19
+00:01:13,090 --> 00:01:17,220
+And, of course, we did go read some stuff from input and
+
+20
+00:01:17,220 --> 00:01:20,290
+it comes back in and we do print some stuff to output.
+
+21
+00:01:20,290 --> 00:01:21,850
+So that we've done that, but
+
+22
+00:01:21,850 --> 00:01:27,470
+now we're gonna start working here cuz this is where the permanent storage is.
+
+23
+00:01:27,470 --> 00:01:32,780
+And later we're gonna talk to the network and later we'll talk to a database.
+
+24
+00:01:32,780 --> 00:01:35,134
+And so these are kind of the permanent storage things.
+
+25
+00:01:35,134 --> 00:01:39,543
+And so everything we've done up til now is either been to the keyboard and
+
+26
+00:01:39,543 --> 00:01:44,532
+the screen or just inside the computer because that's we've been learning how to
+
+27
+00:01:44,532 --> 00:01:46,250
+do basically things.
+
+28
+00:01:46,250 --> 00:01:50,020
+But now we're gonna do things to something, and that is to a file or
+
+29
+00:01:50,020 --> 00:01:51,350
+to something.
+
+30
+00:01:51,350 --> 00:01:53,520
+And that's where it gets interesting.
+
+31
+00:01:53,520 --> 00:01:54,961
+And so we have these files, and
+
+32
+00:01:54,961 --> 00:01:58,799
+the files we're gonna play with initially are what are called flat-text files.
+
+33
+00:01:58,799 --> 00:02:01,345
+They are files that consist of lines, and
+
+34
+00:02:01,345 --> 00:02:05,805
+the file we're gonna play with is called mbox.txt or mboxshort.txt.
+
+35
+00:02:05,805 --> 00:02:08,665
+And you'll notice that this first line is the exact line that I
+
+36
+00:02:08,665 --> 00:02:10,810
+played with at the end of the strings chapter.
+
+37
+00:02:11,910 --> 00:02:15,690
+This turns out to be a standard format called a mailbox format.
+
+38
+00:02:15,690 --> 00:02:20,390
+And this is when you sort of take a mail program and you export a folder,
+
+39
+00:02:20,390 --> 00:02:24,220
+or a sub-folder of that mail program into a flat-file,
+
+40
+00:02:24,220 --> 00:02:25,380
+this is the format that you get.
+
+41
+00:02:25,380 --> 00:02:29,360
+And so it turns out that it's somewhat useful, and it's quite common to have to
+
+42
+00:02:29,360 --> 00:02:33,700
+write programs to scan through email, and look through stuff in that email.
+
+43
+00:02:33,700 --> 00:02:35,040
+So that's what we're gonna do.
+
+44
+00:02:36,480 --> 00:02:40,430
+And so these text files, these flat-text files, meaning that they are not like
+
+45
+00:02:40,430 --> 00:02:44,070
+a Word processing document or a PDF or something like that.
+
+46
+00:02:44,070 --> 00:02:47,510
+They are just a set of lines that a program can read.
+
+47
+00:02:48,800 --> 00:02:52,665
+Every program that you've written when you are writing Python programs are also
+
+48
+00:02:52,665 --> 00:02:56,169
+flat-text files, they just happen to end in .py.
+
+49
+00:02:56,169 --> 00:03:01,775
+So here is a sequence of lines, it's some characters, [SOUND], and then a new line.
+
+50
+00:03:01,775 --> 00:03:05,046
+It's like you hit the Enter key, and then there's more characters, and
+
+51
+00:03:05,046 --> 00:03:07,090
+then you hit the Enter key, and it goes back.
+
+52
+00:03:07,090 --> 00:03:09,267
+It's like a typewriter, type-type-type-type-type,
+
+53
+00:03:09,267 --> 00:03:12,060
+Enter key, type-type-type, then it goes back, etc.
+
+54
+00:03:12,060 --> 00:03:16,185
+So it's a series of lines, [SOUND].
+
+55
+00:03:16,185 --> 00:03:19,249
+And so before we can work with a file inside Python,
+
+56
+00:03:19,249 --> 00:03:23,360
+we want to tell Python that we're gonna work with that file.
+
+57
+00:03:23,360 --> 00:03:26,990
+This is an act we call opening, it's not actually reading the file,
+
+58
+00:03:26,990 --> 00:03:31,340
+it's just making the file available to the code that we're going to write.
+
+59
+00:03:31,340 --> 00:03:34,900
+And so the function that we use is a built in function in Python, and
+
+60
+00:03:34,900 --> 00:03:38,230
+we pass in the name of the file, and whether we're gonna read it or write it.
+
+61
+00:03:38,230 --> 00:03:42,000
+If we leave this out it's going to be read, and
+
+62
+00:03:42,000 --> 00:03:44,940
+then it gives us back what's called a file handle.
+
+63
+00:03:44,940 --> 00:03:48,860
+So an example bit of code is, open('mbox.txt, so
+
+64
+00:03:48,860 --> 00:03:53,110
+we can read it, and then give me back the file handle.
+
+65
+00:03:53,110 --> 00:03:56,840
+File handle is not the data, is just the way to get at the data.
+
+66
+00:03:56,840 --> 00:04:01,657
+And we'll see this later when to place handles or connections or sockets or
+
+67
+00:04:01,657 --> 00:04:06,640
+whatever, that they're not actually data but a thing we can manipulate it.
+
+68
+00:04:06,640 --> 00:04:12,301
+So this handle is something that's sort of a pothole between your program and
+
+69
+00:04:12,301 --> 00:04:15,185
+this file that's sitting on the disk.
+
+70
+00:04:15,185 --> 00:04:19,155
+And you can open it, we can read from it, we can write to it if we want,
+
+71
+00:04:19,155 --> 00:04:22,730
+and then we can close the handle and then the handle goes away.
+
+72
+00:04:22,730 --> 00:04:27,950
+But the handle is like our connection, and so if you just open a file this is for
+
+73
+00:04:27,950 --> 00:04:30,540
+read cuz I forgot that second parameter I didn't put it in.
+
+74
+00:04:30,540 --> 00:04:36,423
+I print it out and it is not the actual lines,
+
+75
+00:04:36,423 --> 00:04:39,450
+it says this is a file.
+
+76
+00:04:40,530 --> 00:04:44,050
+And it's a thing, that's what its name is, we're reading it.
+
+77
+00:04:44,050 --> 00:04:46,350
+And as we interpret the data coming out of the file,
+
+78
+00:04:46,350 --> 00:04:49,190
+we're gonna use the UTF-8 character set to do that.
+
+79
+00:04:49,190 --> 00:04:52,270
+So it's telling us something, but it is not the actual file,
+
+80
+00:04:52,270 --> 00:04:56,440
+there could be hundreds of thousands of lines of data in that file.
+
+81
+00:04:58,210 --> 00:05:01,260
+If you try to open a file that doesn't work, that's not there,
+
+82
+00:05:01,260 --> 00:05:05,440
+not surprisingly, we get a trace back, okay?
+
+83
+00:05:06,940 --> 00:05:09,810
+And later, we'll see how to use a try and accept to deal with
+
+84
+00:05:09,810 --> 00:05:12,550
+the fact that sometimes files don't exist and you want to know that.
+
+85
+00:05:14,310 --> 00:05:17,970
+Now, an important character that we haven't played with much that's going to
+
+86
+00:05:17,970 --> 00:05:21,510
+kind of rule your life when you deal with files is what's called the new
+
+87
+00:05:21,510 --> 00:05:23,160
+line character.
+
+88
+00:05:23,160 --> 00:05:29,970
+And so here is the new line character, in a string you go blah, blah, blah \n.
+
+89
+00:05:29,970 --> 00:05:32,810
+And so if you print this out one way,
+
+90
+00:05:32,810 --> 00:05:36,480
+which means you just type it here, it shows you the \n.
+
+91
+00:05:36,480 --> 00:05:40,810
+But if you run it on a print statement, it actually interprets it and treats that as
+
+92
+00:05:40,810 --> 00:05:45,860
+a non printing character that basically moves to the beginning of the next line.
+
+93
+00:05:45,860 --> 00:05:49,914
+So that's what the new line does, the new line is not two characters,
+
+94
+00:05:49,914 --> 00:05:52,679
+we represent these two characters in a string.
+
+95
+00:05:52,679 --> 00:05:58,340
+But inside the string, inside Python, it's really just a single character.
+
+96
+00:05:58,340 --> 00:06:03,110
+So if we say X newline Y, and we store that in stuff, so
+
+97
+00:06:03,110 --> 00:06:06,730
+newline, we print it and it goes, it shows this.
+
+98
+00:06:06,730 --> 00:06:11,290
+But if we ask how many characters are in it, it says there are 3 characters,
+
+99
+00:06:11,290 --> 00:06:14,770
+cuz that's character 1, 2, and 3, actually, it's 0, 1, and 2.
+
+100
+00:06:14,770 --> 00:06:18,390
+But whatever, that's three characters it's not four characters.
+
+101
+00:06:18,390 --> 00:06:22,310
+So the new line is one character not two, but
+
+102
+00:06:22,310 --> 00:06:28,840
+we represent it when we're typing into Python, we represent it as \n.
+
+103
+00:06:28,840 --> 00:06:33,820
+So if we think of this file as a sequence of lines, we sort of visualize it
+
+104
+00:06:33,820 --> 00:06:36,590
+this way that's like line one, line two, line three, line four.
+
+105
+00:06:36,590 --> 00:06:41,960
+But actually, what's going on is it's actually a long string of characters
+
+106
+00:06:41,960 --> 00:06:44,490
+which are punctuated by newlines.
+
+107
+00:06:44,490 --> 00:06:49,642
+And so these newlines are really in the file, [SOUND] go back to
+
+108
+00:06:49,642 --> 00:06:54,807
+the beginning, [SOUND] it's like hitting the Enter button.
+
+109
+00:06:54,807 --> 00:06:57,857
+It remembers the Enter button It's not like it's magic,
+
+110
+00:06:57,857 --> 00:07:01,890
+there is an actual character that represents the Enter button.
+
+111
+00:07:01,890 --> 00:07:04,490
+And there's sometimes on different operating systems,
+
+112
+00:07:04,490 --> 00:07:08,040
+there are different versions of this, there's the Unix, the MS-DOS.
+
+113
+00:07:08,040 --> 00:07:10,110
+But at the end of the day, in these files,
+
+114
+00:07:10,110 --> 00:07:14,810
+there is a character that says, go back to the beginning of the next line.
+
+115
+00:07:14,810 --> 00:07:18,943
+And even a blank line ends up, so it's like, [SOUND], newline, and
+
+116
+00:07:18,943 --> 00:07:22,294
+it's newline again, and that gives you a blank line.
+
+117
+00:07:22,294 --> 00:07:26,180
+So if you take a look here, this blank line has really got a character that you
+
+118
+00:07:26,180 --> 00:07:29,040
+don't see, it's a non-printing character.
+
+119
+00:07:29,040 --> 00:07:32,810
+Remember, we talked about whitespace, newlines are whitespace,
+
+120
+00:07:32,810 --> 00:07:36,610
+it's things you don't see, but exist, right?
+
+121
+00:07:36,610 --> 00:07:39,780
+Things you don't see, you just have to believe that they're there.
+
+122
+00:07:39,780 --> 00:07:43,250
+You have to believe that there's a new line there on that little line.
+
+123
+00:07:43,250 --> 00:07:46,791
+So after a while you don't need to imagine these,
+
+124
+00:07:46,791 --> 00:07:49,670
+just remember that new lines are there.
+
+125
+00:07:49,670 --> 00:07:54,166
+And the other thing is interesting that the print function, if we print something
+
+126
+00:07:54,166 --> 00:07:57,370
+out it, automatically sticks a new line at the end for us.
+
+127
+00:07:57,370 --> 00:08:01,510
+And there's a way to tell print not to do that, but by default,
+
+128
+00:08:01,510 --> 00:08:06,684
+print actually prints out [SOUND] and then it puts the new line there on purpose.
+
+129
+00:08:06,684 --> 00:08:08,964
+Okay, so that is how files are structured and
+
+130
+00:08:08,964 --> 00:08:11,070
+where we store them inside the computer.
+
+131
+00:08:11,070 --> 00:08:13,960
+And up next, we're gonna take a look at how we read files in python.
+
